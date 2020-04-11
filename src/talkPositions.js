@@ -1,0 +1,17 @@
+export default {
+	'disappointed': -18,
+	'very-disappointed': 17,
+	'angry': 60,
+	'drama': -10,
+	'drama-2': -7,
+	'crying': -6,
+	'crying-lot': 48,
+	'tears-bath': 3,
+	'got-you': -38,
+	'bro': -36,
+	'dancing': 0,
+	'dab': -66,
+	'pole-dance-1': 60,
+	'pole-dance-2': -74,
+	'fly-on-bird': 54,
+}

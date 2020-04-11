@@ -1,0 +1,84 @@
+@font-face {
+	font-family: GameMusic;
+	src: url("fonts/game-music-love.ttf");
+}
+
+@font-face {
+	font-family: CrimsonText;
+	src: url("fonts/CrimsonText/CrimsonText-Regular.ttf");
+}
+
+@font-face {
+	font-family: CrimsonText;
+	font-weight: bold;
+	src: url("fonts/CrimsonText/CrimsonText-SemiBold.ttf");
+}
+
+@font-face {
+	font-family: ChunkFive;
+	src: url("fonts/ChunkFive/ChunkFive-Print.otf");
+}
+
+@font-face {
+	font-family: Galiver;
+	src: url("fonts/GaliverSans/GALS.ttf");
+}
+
+* {
+	user-select: none !important; 
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+html {
+	background: url("img/bg-blue.png") repeat;
+	font-family: CrimsonText;
+	font-size: 22px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: hidden;
+	height: 100vh;
+}
+
+body {
+	margin: 0;
+	width: 100%;
+	max-width: 600px;
+	position: relative;
+	height: 100vh;
+	background: rgba(0,0,0, 0.15);
+	box-shadow: 0 0 12px 8px rgba(0,0,0, 0.15);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+}
+
+img {
+	filter: drop-shadow(0 0 1px #FEFEFE);
+	flex-shrink: 0;
+}
+
+button {
+	outline: none;
+}
+
+button[pushed=true] {
+	box-shadow: inset 1px 1px 2px 1px rgba(0,0,0, 0.55);
+}
+
+.game-music {
+	font-family: GameMusic;
+	letter-spacing: 2px;
+	font-size: 18px;
+	padding: 12px 18px;
+	border-radius: 4px;
+	border: none;
+	text-align: center;
+	margin: 1vh 0;
+	box-shadow: inset -1px -1px 2px 1px rgba(0,0,0, 0.55);
+	cursor: pointer;
+	background: #145cf9;
+	color: white;
+}

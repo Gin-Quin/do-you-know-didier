@@ -1,0 +1,56 @@
+
+const imagesToPreload = [
+	'bitmoji/face-standard.png',
+	'bitmoji/face-smile.png',
+	'bitmoji/face-big-smile.png',
+	'bitmoji/face-still.png',
+	'bitmoji/face-wink.png',
+	'bitmoji/face-super-cool.png',
+	'bitmoji/face-eye-right.png',
+	'bitmoji/face-eye-left.png',
+	'bitmoji/face-angry.png',
+	'bitmoji/face-slightly-mad.png',
+	'bitmoji/face-happiest.png',
+	'bitmoji/face-crying.png',
+	'bitmoji/face-crying-lot.png',
+	'bitmoji/face-laugh-with-tears.png',
+	'bitmoji/face-tear.png',
+	'bitmoji/face-gosh.png',
+
+	'img/height-1.png',
+	'img/height-2.png',
+	'img/height-3.png',
+	'img/teeth-1.png',
+	'img/teeth-2.png',
+	'img/teeth-3.png',
+	'img/teeth-4.png',
+	'img/baby-3.png',
+	'img/crocodile.png',
+	'img/guepard.png',
+	'img/plane.png',
+	'img/boulangerie.png',
+	'img/good-food.png',
+	'img/caca.png',
+
+	'bitmoji/full-very-disappointed.png',
+	'bitmoji/full-disappointed.png',
+	'bitmoji/full-drama.png',
+	'bitmoji/full-drama-2.png',
+	'bitmoji/full-crying.png',
+	'bitmoji/full-crying-lot.png',
+	'bitmoji/full-tears-bath.png',
+	'bitmoji/full-got-you.png',
+	'bitmoji/full-got-you-2.png',
+	'bitmoji/full-bro.png',
+	'bitmoji/full-dancing.png',
+	'bitmoji/full-dancing-2.png',
+	'bitmoji/full-dab.png',
+	'bitmoji/full-pole-dance-1.png',
+	'bitmoji/full-pole-dance-2.png',
+	'bitmoji/full-fly-on-bird.png',
+] 
+
+export default function preloadImages() {
+	for (let img of imagesToPreload)
+		(new Image).src = img
+}
