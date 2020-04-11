@@ -633,7 +633,7 @@
 
 	#bitmoji-talk {
 		position: absolute;
-		left: 136px;
+		left: 140px;
 		bottom: 22px;
 		width: calc(100% - 177px);
 		background: #fefefe;
