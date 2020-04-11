@@ -642,7 +642,7 @@
 		border-bottom-left-radius: 0;
 		box-shadow: inset -1px -1px 1px 1px rgba(0,0,0,0.7);
 		cursor: default;
-		line-height: 20px;
+		line-height: 25px;
 	}
 
 	#bitmoji-talk:empty {
