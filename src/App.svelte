@@ -1,5 +1,9 @@
 <div id="fader" status={fader}></div>
 
+<div id="dolmenia" show={showDolmenia}>
+	<img src="img/dolmenia.png" alt="">
+</div>
+
 {#if stage == "menu"}
 
 	<h1>
@@ -129,6 +133,7 @@
 	let step = -1
 	let displayedStepDelta = 0
 	let repetedQuestions = 3
+	let showDolmenia = false
 	let face = 'standard'
 	let say = ""
 	let hasAnswered = false
@@ -215,11 +220,15 @@
 					case 'hide':
 						if (argument == 'face')
 							showFace = false
+						else if (argument == 'dolmenia')
+							showDolmenia = false
 						this.run()
 						break
 					case 'show':
 						if (argument == 'face')
 							showFace = true
+						else if (argument == 'dolmenia')
+							showDolmenia = true
 						this.run()
 						break
 					case 'reset':
@@ -360,10 +369,10 @@
 					actions.execute(page.outro)
 				actions.do(next)
 			}
-			else {
+			else if (page.sentencesNext) {
 				actions.execute(`
 					face
-					say ${random(butAlso)}
+					say ${random(page.sentencesNext)}
 				`)
 			}
 
@@ -508,7 +517,7 @@
 	#main[display=text] > button {
 		display: flex;
 		flex-direction: column;
-		/* justify-content: center; */
+		justify-content: center;
 		font-family: CrimsonText;
 		font-size: 22px;
 		position: relative;
@@ -568,7 +577,7 @@
 		bottom: 0;
 		height: 114px;
 		width: 100%;
-		z-index: 1;
+		z-index: 10;
 		flex-shrink: 0;
 		overflow: visible;
 		transition: bottom 0.2s ease-out;
@@ -589,6 +598,34 @@
 		}
 	}
 
+	#dolmenia {
+		position: absolute;
+		width: 90%;
+		left: 5%;
+		top: 3%;
+		padding: 0 3px;
+		background: white;
+		border-radius: 18px;
+		box-shadow: 0 0px 12px 3px rgba(255,255,255,0.8);
+		cursor: default;
+		z-index: 5;
+		opacity: 0;
+		transition: opacity 1s linear;
+		pointer-events: none;
+	}
+
+	#dolmenia[show=true] {
+		opacity: 1;
+	}
+
+	#dolmenia > img {
+		width: 100%;
+		border-radius: 18px;
+		position: relative;
+		top: 4px;
+	}
+
+
 	#bitmoji > img {
 		position: relative;
 		top: -22px;
@@ -596,11 +633,11 @@
 
 	#bitmoji-talk {
 		position: absolute;
-		left: 142px;
+		left: 136px;
 		bottom: 22px;
-		width: calc(100% - 203px);
+		width: calc(100% - 177px);
 		background: #fefefe;
-		padding: 22px 26px;
+		padding: 18px;
 		border-radius: 18px;
 		border-bottom-left-radius: 0;
 		box-shadow: inset -1px -1px 1px 1px rgba(0,0,0,0.7);

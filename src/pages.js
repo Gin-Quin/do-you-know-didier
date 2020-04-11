@@ -202,9 +202,11 @@ export const pages = [
 			face no-hope
 			say C'est bien, tu avances !
 			face unsure
+			show dolmenia
 			say Si ça se trouve, c'est avec toi que je vais aller à <b>DOLMENIA</b> ?
 			face perplexed
 			say Peut-être même qu'on pourrait bien s'entendre ?
+			hide dolmenia
 		`
 	},
 
@@ -287,6 +289,7 @@ export const pages = [
 	{
 		ask: "Qu'est-ce que Didier déteste le plus au monde ?",
 		requestedAnswers: 4,
+		sentencesNext: ["Mais je déteste aussi...", "Qui d'autre ?"],
 		answers: [
 			{
 				value: "Les gendarmes",
@@ -386,8 +389,9 @@ export const pages = [
 
 
 	{
-		ask: "Que déteste le plus Didier ?",
+		ask: "Qu'est-ce que Didier déteste le plus au monde ?",
 		requestedAnswers: 6,
+		sentencesNext: ["Mais je déteste aussi...", "Qui d'autre ?"],
 		answers: [
 			{
 				value: "Les journalistes",
@@ -431,26 +435,50 @@ export const pages = [
 			{
 				value: "Le céleri rémoulade",
 				valid: true,
+				action: `
+					face smile
+					say Ouais j'adore ça ! Mais j'aime encore plus...
+				`
 			},
 			{
 				value: "Les genoux de Rose-Marie",
 				valid: true,
+				action: `
+					face perplexed
+					say Pfff...
+				`
 			},
 			{
 				value: "Les cheveux de Rose-Marie",
 				valid: true,
+				action: `
+					face wry
+					say Hein ?!
+				`
 			},
 			{
 				value: "Les chevilles de Rose-Marie",
 				valid: true,
+				action: `
+					face what-you-doing
+					say Mais heu !
+				`
 			},
 			{
 				value: "Les yeux de Rose-Marie",
 				valid: true,
+				action: `
+					face suspicious
+					say MAIS !
+				`
 			},
 			{
 				value: "L'élégance naturelle de Rose-Marie",
 				valid: true,
+				action: `
+					face wry
+					say Mais noooon...
+				`
 			},
 		],
 		outro: `
@@ -460,7 +488,7 @@ export const pages = [
 			face wry
 			say C'est même pas vrai en plus !
 			say Ridicule !
-			say En plus, elle n'est SI jolie que ça, cette greluche...
+			say En plus, elle n'est pas SI jolie que ça, cette greluche...
 			face suspicious
 			say <i>(Je la déteste !)</i>
 		`
@@ -516,7 +544,7 @@ export const pages = [
 			say Tu sais pas ce que ça veut dire ?
 			say Ben t'as perdu : casse-toi !
 			face hihi
-			say JE DÉCOOOONNE !
+			say JE DÉCOOONNE !
 			face smile
 			say Tu peux rester.
 			face sorry
@@ -530,7 +558,9 @@ export const pages = [
 			say Personne ne t'en veut. Moi, je t'en veux pas.
 			face standard
 			say J'ai juste besoin d'un ami.
+			show dolmenia
 			say Pour aller à <b>DOLMENIA</b>.
+			hide dolmenia
 			face smile
 			say Allez, steuplé !
 			say La joue pas miskine comme ça !

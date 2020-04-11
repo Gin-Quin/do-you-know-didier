@@ -14,11 +14,14 @@ export default `
 
 	face smile
 	say Vous savez pourquoi vous êtes là, hein ?
+	show dolmenia
 	say <b>DOLMENIA</b>, le plus grand parc à thème de la région va bientôt ouvrir ses portes.
 
 	face drink-coffee
 	say Rose-Marie, ma DRH (une vraie connasse soit dit en passant) a voulu me récompenser de mes efforts au boulot.
+	show dolmenia
 	say Pour me féliciter, elle m'a « offert » deux billets pour l'inauguration de <b>DOLMENIA</b> à la seule condition que j'y aille accompagné d'un <i>ami</i>.
+	hide dolmenia
 
 	face suspicious
 	say Je déteste les parcs d'attraction et les saloperies d'activités culturelles à la con. C'est toujours plein de... familles !

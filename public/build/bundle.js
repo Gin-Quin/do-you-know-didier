@@ -556,9 +556,11 @@ var app = (function () {
 			face no-hope
 			say C'est bien, tu avances !
 			face unsure
+			show dolmenia
 			say Si ça se trouve, c'est avec toi que je vais aller à <b>DOLMENIA</b> ?
 			face perplexed
 			say Peut-être même qu'on pourrait bien s'entendre ?
+			hide dolmenia
 		`
     	},
 
@@ -641,6 +643,7 @@ var app = (function () {
     	{
     		ask: "Qu'est-ce que Didier déteste le plus au monde ?",
     		requestedAnswers: 4,
+    		sentencesNext: ["Mais je déteste aussi...", "Qui d'autre ?"],
     		answers: [
     			{
     				value: "Les gendarmes",
@@ -740,8 +743,9 @@ var app = (function () {
 
 
     	{
-    		ask: "Que déteste le plus Didier ?",
+    		ask: "Qu'est-ce que Didier déteste le plus au monde ?",
     		requestedAnswers: 6,
+    		sentencesNext: ["Mais je déteste aussi...", "Qui d'autre ?"],
     		answers: [
     			{
     				value: "Les journalistes",
@@ -785,26 +789,50 @@ var app = (function () {
     			{
     				value: "Le céleri rémoulade",
     				valid: true,
+    				action: `
+					face smile
+					say Ouais j'adore ça ! Mais j'aime encore plus...
+				`
     			},
     			{
     				value: "Les genoux de Rose-Marie",
     				valid: true,
+    				action: `
+					face perplexed
+					say Pfff...
+				`
     			},
     			{
     				value: "Les cheveux de Rose-Marie",
     				valid: true,
+    				action: `
+					face wry
+					say Hein ?!
+				`
     			},
     			{
     				value: "Les chevilles de Rose-Marie",
     				valid: true,
+    				action: `
+					face what-you-doing
+					say Mais heu !
+				`
     			},
     			{
     				value: "Les yeux de Rose-Marie",
     				valid: true,
+    				action: `
+					face suspicious
+					say MAIS !
+				`
     			},
     			{
     				value: "L'élégance naturelle de Rose-Marie",
     				valid: true,
+    				action: `
+					face wry
+					say Mais noooon...
+				`
     			},
     		],
     		outro: `
@@ -814,7 +842,7 @@ var app = (function () {
 			face wry
 			say C'est même pas vrai en plus !
 			say Ridicule !
-			say En plus, elle n'est SI jolie que ça, cette greluche...
+			say En plus, elle n'est pas SI jolie que ça, cette greluche...
 			face suspicious
 			say <i>(Je la déteste !)</i>
 		`
@@ -870,7 +898,7 @@ var app = (function () {
 			say Tu sais pas ce que ça veut dire ?
 			say Ben t'as perdu : casse-toi !
 			face hihi
-			say JE DÉCOOOONNE !
+			say JE DÉCOOONNE !
 			face smile
 			say Tu peux rester.
 			face sorry
@@ -884,7 +912,9 @@ var app = (function () {
 			say Personne ne t'en veut. Moi, je t'en veux pas.
 			face standard
 			say J'ai juste besoin d'un ami.
+			show dolmenia
 			say Pour aller à <b>DOLMENIA</b>.
+			hide dolmenia
 			face smile
 			say Allez, steuplé !
 			say La joue pas miskine comme ça !
@@ -1073,11 +1103,14 @@ var app = (function () {
 
 	face smile
 	say Vous savez pourquoi vous êtes là, hein ?
+	show dolmenia
 	say <b>DOLMENIA</b>, le plus grand parc à thème de la région va bientôt ouvrir ses portes.
 
 	face drink-coffee
 	say Rose-Marie, ma DRH (une vraie connasse soit dit en passant) a voulu me récompenser de mes efforts au boulot.
+	show dolmenia
 	say Pour me féliciter, elle m'a « offert » deux billets pour l'inauguration de <b>DOLMENIA</b> à la seule condition que j'y aille accompagné d'un <i>ami</i>.
+	hide dolmenia
 
 	face suspicious
 	say Je déteste les parcs d'attraction et les saloperies d'activités culturelles à la con. C'est toujours plein de... familles !
@@ -1149,54 +1182,24 @@ var app = (function () {
     };
 
     const imagesToPreload = [
-    	'bitmoji/face-standard.png',
-    	'bitmoji/face-smile.png',
-    	'bitmoji/face-big-smile.png',
-    	'bitmoji/face-still.png',
-    	'bitmoji/face-wink.png',
-    	'bitmoji/face-super-cool.png',
-    	'bitmoji/face-eye-right.png',
-    	'bitmoji/face-eye-left.png',
-    	'bitmoji/face-angry.png',
-    	'bitmoji/face-slightly-mad.png',
-    	'bitmoji/face-happiest.png',
-    	'bitmoji/face-crying.png',
-    	'bitmoji/face-crying-lot.png',
-    	'bitmoji/face-laugh-with-tears.png',
-    	'bitmoji/face-tear.png',
-    	'bitmoji/face-gosh.png',
-
-    	'img/height-1.png',
-    	'img/height-2.png',
-    	'img/height-3.png',
-    	'img/teeth-1.png',
-    	'img/teeth-2.png',
-    	'img/teeth-3.png',
-    	'img/teeth-4.png',
-    	'img/baby-3.png',
-    	'img/crocodile.png',
-    	'img/guepard.png',
-    	'img/plane.png',
-    	'img/boulangerie.png',
-    	'img/good-food.png',
-    	'img/caca.png',
-
-    	'bitmoji/full-very-disappointed.png',
-    	'bitmoji/full-disappointed.png',
-    	'bitmoji/full-drama.png',
-    	'bitmoji/full-drama-2.png',
-    	'bitmoji/full-crying.png',
-    	'bitmoji/full-crying-lot.png',
-    	'bitmoji/full-tears-bath.png',
-    	'bitmoji/full-got-you.png',
-    	'bitmoji/full-got-you-2.png',
-    	'bitmoji/full-bro.png',
-    	'bitmoji/full-dancing.png',
-    	'bitmoji/full-dancing-2.png',
-    	'bitmoji/full-dab.png',
-    	'bitmoji/full-pole-dance-1.png',
-    	'bitmoji/full-pole-dance-2.png',
-    	'bitmoji/full-fly-on-bird.png',
+    	'bitmoji/standard.png',
+    	'bitmoji/drink-coffee.png',
+    	'bitmoji/no-hope.png',
+    	'bitmoji/not-bad.png',
+    	'bitmoji/not-impressed.png',
+    	'bitmoji/smile.png',
+    	'bitmoji/wry.png',
+    	'bitmoji/what-you-doing.png',
+    	'bitmoji/perplexed.png',
+    	'bitmoji/sad.png',
+    	'bitmoji/sorry.png',
+    	'bitmoji/suspicious.png',
+    	'bitmoji/unsure.png',
+    	'bitmoji/well-ok.png',
+    	'bitmoji/clap-left.png',
+    	'bitmoji/clap-right.png',
+    	'bitmoji/spit-coffee.png',
+    	'bitmoji/katana.png',
     ]; 
 
     function preloadImages() {
@@ -1211,12 +1214,12 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[34] = list[i];
-    	child_ctx[36] = i;
+    	child_ctx[35] = list[i];
+    	child_ctx[37] = i;
     	return child_ctx;
     }
 
-    // (95:27) 
+    // (99:27) 
     function create_if_block_5(ctx) {
     	let footer;
     	let div0;
@@ -1232,21 +1235,21 @@ var app = (function () {
     			img = element("img");
     			t = space();
     			div1 = element("div");
-    			if (img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[5]}.png`)) attr_dev(img, "src", img_src_value);
+    			if (img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[6]}.png`)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
     			attr_dev(img, "width", "140px");
-    			attr_dev(img, "class", "svelte-1dftq4j");
-    			add_location(img, file, 98, 3, 2132);
+    			attr_dev(img, "class", "svelte-tf7pg8");
+    			add_location(img, file, 102, 3, 2217);
     			attr_dev(div0, "id", "bitmoji");
-    			attr_dev(div0, "class", "svelte-1dftq4j");
-    			add_location(div0, file, 97, 2, 2110);
+    			attr_dev(div0, "class", "svelte-tf7pg8");
+    			add_location(div0, file, 101, 2, 2195);
     			attr_dev(div1, "id", "bitmoji-talk");
-    			attr_dev(div1, "class", "svelte-1dftq4j");
-    			add_location(div1, file, 101, 2, 2199);
+    			attr_dev(div1, "class", "svelte-tf7pg8");
+    			add_location(div1, file, 105, 2, 2284);
     			attr_dev(footer, "id", "footer");
-    			attr_dev(footer, "show", /*showFace*/ ctx[9]);
-    			attr_dev(footer, "class", "animated bounceInUp svelte-1dftq4j");
-    			add_location(footer, file, 96, 1, 2043);
+    			attr_dev(footer, "show", /*showFace*/ ctx[10]);
+    			attr_dev(footer, "class", "animated bounceInUp svelte-tf7pg8");
+    			add_location(footer, file, 100, 1, 2128);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, footer, anchor);
@@ -1254,16 +1257,16 @@ var app = (function () {
     			append_dev(div0, img);
     			append_dev(footer, t);
     			append_dev(footer, div1);
-    			div1.innerHTML = /*say*/ ctx[6];
+    			div1.innerHTML = /*say*/ ctx[7];
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*face*/ 32 && img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[5]}.png`)) {
+    			if (dirty[0] & /*face*/ 64 && img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[6]}.png`)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty[0] & /*say*/ 64) div1.innerHTML = /*say*/ ctx[6];
-    			if (dirty[0] & /*showFace*/ 512) {
-    				attr_dev(footer, "show", /*showFace*/ ctx[9]);
+    			if (dirty[0] & /*say*/ 128) div1.innerHTML = /*say*/ ctx[7];
+    			if (dirty[0] & /*showFace*/ 1024) {
+    				attr_dev(footer, "show", /*showFace*/ ctx[10]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -1275,14 +1278,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(95:27) ",
+    		source: "(99:27) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (48:26) 
+    // (52:26) 
     function create_if_block_3(ctx) {
     	let div1;
     	let div0;
@@ -1291,11 +1294,11 @@ var app = (function () {
     	let t1_value = /*step*/ ctx[3] + /*displayedStepDelta*/ ctx[4] + 1 + "";
     	let t1;
     	let t2;
-    	let t3_value = pages.length - /*repetedQuestions*/ ctx[10] + "";
+    	let t3_value = pages.length - /*repetedQuestions*/ ctx[11] + "";
     	let t3;
     	let t4;
     	let header;
-    	let t5_value = /*page*/ ctx[7].ask + "";
+    	let t5_value = /*page*/ ctx[8].ask + "";
     	let t5;
     	let header_class_value;
     	let t6;
@@ -1309,7 +1312,7 @@ var app = (function () {
     	let t8;
     	let div3;
     	let footer_furtive_value;
-    	let each_value = /*page*/ ctx[7].answers;
+    	let each_value = /*page*/ ctx[8].answers;
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -1341,34 +1344,34 @@ var app = (function () {
     			img = element("img");
     			t8 = space();
     			div3 = element("div");
-    			attr_dev(div0, "class", "filler svelte-1dftq4j");
-    			attr_dev(div0, "style", div0_style_value = `width: ${100 * (/*step*/ ctx[3] + /*displayedStepDelta*/ ctx[4] + 1) / (pages.length - /*repetedQuestions*/ ctx[10])}%`);
-    			add_location(div0, file, 50, 2, 1063);
+    			attr_dev(div0, "class", "filler svelte-tf7pg8");
+    			attr_dev(div0, "style", div0_style_value = `width: ${100 * (/*step*/ ctx[3] + /*displayedStepDelta*/ ctx[4] + 1) / (pages.length - /*repetedQuestions*/ ctx[11])}%`);
+    			add_location(div0, file, 54, 2, 1148);
     			attr_dev(div1, "id", "progress-bar");
-    			attr_dev(div1, "class", "svelte-1dftq4j");
-    			add_location(div1, file, 49, 1, 1037);
+    			attr_dev(div1, "class", "svelte-tf7pg8");
+    			add_location(div1, file, 53, 1, 1122);
     			attr_dev(header, "id", "header");
-    			attr_dev(header, "class", header_class_value = "" + (null_to_empty("animated " + /*headerAnimation*/ ctx[8]) + " svelte-1dftq4j"));
-    			add_location(header, file, 57, 1, 1275);
+    			attr_dev(header, "class", header_class_value = "" + (null_to_empty("animated " + /*headerAnimation*/ ctx[9]) + " svelte-tf7pg8"));
+    			add_location(header, file, 61, 1, 1360);
     			attr_dev(main, "id", "main");
-    			attr_dev(main, "class", "animated bounceInRight svelte-1dftq4j");
-    			attr_dev(main, "display", main_display_value = /*page*/ ctx[7].display || "text");
-    			add_location(main, file, 64, 1, 1368);
-    			if (img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[5]}.png`)) attr_dev(img, "src", img_src_value);
+    			attr_dev(main, "class", "animated bounceInRight svelte-tf7pg8");
+    			attr_dev(main, "display", main_display_value = /*page*/ ctx[8].display || "text");
+    			add_location(main, file, 68, 1, 1453);
+    			if (img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[6]}.png`)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
     			attr_dev(img, "width", "140px");
-    			attr_dev(img, "class", "svelte-1dftq4j");
-    			add_location(img, file, 87, 3, 1883);
+    			attr_dev(img, "class", "svelte-tf7pg8");
+    			add_location(img, file, 91, 3, 1968);
     			attr_dev(div2, "id", "bitmoji");
-    			attr_dev(div2, "class", "svelte-1dftq4j");
-    			add_location(div2, file, 86, 2, 1861);
+    			attr_dev(div2, "class", "svelte-tf7pg8");
+    			add_location(div2, file, 90, 2, 1946);
     			attr_dev(div3, "id", "bitmoji-talk");
-    			attr_dev(div3, "class", " svelte-1dftq4j");
-    			add_location(div3, file, 90, 2, 1950);
+    			attr_dev(div3, "class", " svelte-tf7pg8");
+    			add_location(div3, file, 94, 2, 2035);
     			attr_dev(footer, "id", "footer");
-    			attr_dev(footer, "furtive", footer_furtive_value = !/*say*/ ctx[6]);
-    			attr_dev(footer, "class", "animated bounceInUp svelte-1dftq4j");
-    			add_location(footer, file, 85, 1, 1795);
+    			attr_dev(footer, "furtive", footer_furtive_value = !/*say*/ ctx[7]);
+    			attr_dev(footer, "class", "animated bounceInUp svelte-tf7pg8");
+    			add_location(footer, file, 89, 1, 1880);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -1393,22 +1396,22 @@ var app = (function () {
     			append_dev(div2, img);
     			append_dev(footer, t8);
     			append_dev(footer, div3);
-    			div3.innerHTML = /*say*/ ctx[6];
+    			div3.innerHTML = /*say*/ ctx[7];
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*step, displayedStepDelta*/ 24 && div0_style_value !== (div0_style_value = `width: ${100 * (/*step*/ ctx[3] + /*displayedStepDelta*/ ctx[4] + 1) / (pages.length - /*repetedQuestions*/ ctx[10])}%`)) {
+    			if (dirty[0] & /*step, displayedStepDelta*/ 24 && div0_style_value !== (div0_style_value = `width: ${100 * (/*step*/ ctx[3] + /*displayedStepDelta*/ ctx[4] + 1) / (pages.length - /*repetedQuestions*/ ctx[11])}%`)) {
     				attr_dev(div0, "style", div0_style_value);
     			}
 
     			if (dirty[0] & /*step, displayedStepDelta*/ 24 && t1_value !== (t1_value = /*step*/ ctx[3] + /*displayedStepDelta*/ ctx[4] + 1 + "")) set_data_dev(t1, t1_value);
-    			if (dirty[0] & /*page*/ 128 && t5_value !== (t5_value = /*page*/ ctx[7].ask + "")) set_data_dev(t5, t5_value);
+    			if (dirty[0] & /*page*/ 256 && t5_value !== (t5_value = /*page*/ ctx[8].ask + "")) set_data_dev(t5, t5_value);
 
-    			if (dirty[0] & /*headerAnimation*/ 256 && header_class_value !== (header_class_value = "" + (null_to_empty("animated " + /*headerAnimation*/ ctx[8]) + " svelte-1dftq4j"))) {
+    			if (dirty[0] & /*headerAnimation*/ 512 && header_class_value !== (header_class_value = "" + (null_to_empty("animated " + /*headerAnimation*/ ctx[9]) + " svelte-tf7pg8"))) {
     				attr_dev(header, "class", header_class_value);
     			}
 
-    			if (dirty[0] & /*page, clickAnswer*/ 4224) {
-    				each_value = /*page*/ ctx[7].answers;
+    			if (dirty[0] & /*page, clickAnswer*/ 8448) {
+    				each_value = /*page*/ ctx[8].answers;
     				validate_each_argument(each_value);
     				let i;
 
@@ -1431,16 +1434,16 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty[0] & /*page*/ 128 && main_display_value !== (main_display_value = /*page*/ ctx[7].display || "text")) {
+    			if (dirty[0] & /*page*/ 256 && main_display_value !== (main_display_value = /*page*/ ctx[8].display || "text")) {
     				attr_dev(main, "display", main_display_value);
     			}
 
-    			if (dirty[0] & /*face*/ 32 && img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[5]}.png`)) {
+    			if (dirty[0] & /*face*/ 64 && img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[6]}.png`)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty[0] & /*say*/ 64) div3.innerHTML = /*say*/ ctx[6];
-    			if (dirty[0] & /*say*/ 64 && footer_furtive_value !== (footer_furtive_value = !/*say*/ ctx[6])) {
+    			if (dirty[0] & /*say*/ 128) div3.innerHTML = /*say*/ ctx[7];
+    			if (dirty[0] & /*say*/ 128 && footer_furtive_value !== (footer_furtive_value = !/*say*/ ctx[7])) {
     				attr_dev(footer, "furtive", footer_furtive_value);
     			}
     		},
@@ -1460,14 +1463,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(48:26) ",
+    		source: "(52:26) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (38:27) 
+    // (42:27) 
     function create_if_block_2(ctx) {
     	let footer;
     	let div0;
@@ -1484,21 +1487,21 @@ var app = (function () {
     			img = element("img");
     			t = space();
     			div1 = element("div");
-    			if (img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[5]}.png`)) attr_dev(img, "src", img_src_value);
+    			if (img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[6]}.png`)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
     			attr_dev(img, "width", "140px");
-    			attr_dev(img, "class", "svelte-1dftq4j");
-    			add_location(img, file, 41, 3, 888);
+    			attr_dev(img, "class", "svelte-tf7pg8");
+    			add_location(img, file, 45, 3, 973);
     			attr_dev(div0, "id", "bitmoji");
-    			attr_dev(div0, "class", "svelte-1dftq4j");
-    			add_location(div0, file, 40, 2, 866);
+    			attr_dev(div0, "class", "svelte-tf7pg8");
+    			add_location(div0, file, 44, 2, 951);
     			attr_dev(div1, "id", "bitmoji-talk");
-    			attr_dev(div1, "class", "svelte-1dftq4j");
-    			add_location(div1, file, 44, 2, 955);
+    			attr_dev(div1, "class", "svelte-tf7pg8");
+    			add_location(div1, file, 48, 2, 1040);
     			attr_dev(footer, "id", "footer");
-    			attr_dev(footer, "furtive", footer_furtive_value = !/*say*/ ctx[6]);
-    			attr_dev(footer, "class", "animated bounceInUp svelte-1dftq4j");
-    			add_location(footer, file, 39, 1, 800);
+    			attr_dev(footer, "furtive", footer_furtive_value = !/*say*/ ctx[7]);
+    			attr_dev(footer, "class", "animated bounceInUp svelte-tf7pg8");
+    			add_location(footer, file, 43, 1, 885);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, footer, anchor);
@@ -1506,15 +1509,15 @@ var app = (function () {
     			append_dev(div0, img);
     			append_dev(footer, t);
     			append_dev(footer, div1);
-    			div1.innerHTML = /*say*/ ctx[6];
+    			div1.innerHTML = /*say*/ ctx[7];
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*face*/ 32 && img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[5]}.png`)) {
+    			if (dirty[0] & /*face*/ 64 && img.src !== (img_src_value = `bitmoji/${/*face*/ ctx[6]}.png`)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty[0] & /*say*/ 64) div1.innerHTML = /*say*/ ctx[6];
-    			if (dirty[0] & /*say*/ 64 && footer_furtive_value !== (footer_furtive_value = !/*say*/ ctx[6])) {
+    			if (dirty[0] & /*say*/ 128) div1.innerHTML = /*say*/ ctx[7];
+    			if (dirty[0] & /*say*/ 128 && footer_furtive_value !== (footer_furtive_value = !/*say*/ ctx[7])) {
     				attr_dev(footer, "furtive", footer_furtive_value);
     			}
     		},
@@ -1527,14 +1530,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(38:27) ",
+    		source: "(42:27) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (3:0) {#if stage == "menu"}
+    // (7:0) {#if stage == "menu"}
     function create_if_block(ctx) {
     	let h1;
     	let img0;
@@ -1582,36 +1585,36 @@ var app = (function () {
     			if (img0.src !== (img0_src_value = "bitmoji/standard.png")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "height", "104px");
     			attr_dev(img0, "alt", "");
-    			attr_dev(img0, "class", "svelte-1dftq4j");
-    			add_location(img0, file, 5, 2, 70);
-    			attr_dev(div0, "class", "animated bounceInDown svelte-1dftq4j");
-    			add_location(div0, file, 7, 3, 159);
+    			attr_dev(img0, "class", "svelte-tf7pg8");
+    			add_location(img0, file, 9, 2, 155);
+    			attr_dev(div0, "class", "animated bounceInDown svelte-tf7pg8");
+    			add_location(div0, file, 11, 3, 244);
     			attr_dev(div1, "id", "didier");
-    			attr_dev(div1, "class", "animated bounceInUp svelte-1dftq4j");
-    			add_location(div1, file, 8, 3, 215);
+    			attr_dev(div1, "class", "animated bounceInUp svelte-tf7pg8");
+    			add_location(div1, file, 12, 3, 300);
     			attr_dev(div2, "id", "title");
-    			attr_dev(div2, "class", "svelte-1dftq4j");
-    			add_location(div2, file, 6, 2, 139);
+    			attr_dev(div2, "class", "svelte-tf7pg8");
+    			add_location(div2, file, 10, 2, 224);
     			attr_dev(img1, "id", "demon");
     			if (img1.src !== (img1_src_value = "bitmoji/standard.png")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "height", "104px");
     			attr_dev(img1, "alt", "");
-    			attr_dev(img1, "class", "svelte-1dftq4j");
-    			add_location(img1, file, 10, 2, 285);
-    			attr_dev(h1, "class", "svelte-1dftq4j");
-    			add_location(h1, file, 4, 1, 63);
+    			attr_dev(img1, "class", "svelte-tf7pg8");
+    			add_location(img1, file, 14, 2, 370);
+    			attr_dev(h1, "class", "svelte-tf7pg8");
+    			add_location(h1, file, 8, 1, 148);
     			attr_dev(button, "id", "start");
-    			attr_dev(button, "class", "game-music svelte-1dftq4j");
-    			add_location(button, file, 14, 2, 378);
+    			attr_dev(button, "class", "game-music svelte-tf7pg8");
+    			add_location(button, file, 18, 2, 463);
     			attr_dev(div3, "id", "menu");
-    			attr_dev(div3, "class", "svelte-1dftq4j");
-    			add_location(div3, file, 13, 1, 360);
+    			attr_dev(div3, "class", "svelte-tf7pg8");
+    			add_location(div3, file, 17, 1, 445);
     			attr_dev(img2, "id", "resting");
     			if (img2.src !== (img2_src_value = "bitmoji/fuck-this-shit.png")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "width", "270px");
     			attr_dev(img2, "alt", "");
-    			attr_dev(img2, "class", "svelte-1dftq4j");
-    			add_location(img2, file, 34, 1, 695);
+    			attr_dev(img2, "class", "svelte-tf7pg8");
+    			add_location(img2, file, 38, 1, 780);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, h1, anchor);
@@ -1631,7 +1634,7 @@ var app = (function () {
     			insert_dev(target, t8, anchor);
     			insert_dev(target, img2, anchor);
     			if (remount) dispose();
-    			dispose = listen_dev(button, "click", /*startIntro*/ ctx[13], false, false, false);
+    			dispose = listen_dev(button, "click", /*startIntro*/ ctx[14], false, false, false);
     		},
     		p: function update(ctx, dirty) {
     			if (document.body.parentElement.requestFullscreen) if_block.p(ctx, dirty);
@@ -1651,25 +1654,25 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(3:0) {#if stage == \\\"menu\\\"}",
+    		source: "(7:0) {#if stage == \\\"menu\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (77:4) {:else}
+    // (81:4) {:else}
     function create_else_block(ctx) {
     	let span;
-    	let t_value = letters[/*index*/ ctx[36]] + "";
+    	let t_value = letters[/*index*/ ctx[37]] + "";
     	let t;
 
     	const block = {
     		c: function create() {
     			span = element("span");
     			t = text(t_value);
-    			attr_dev(span, "class", "index-letter svelte-1dftq4j");
-    			add_location(span, file, 77, 5, 1680);
+    			attr_dev(span, "class", "index-letter svelte-tf7pg8");
+    			add_location(span, file, 81, 5, 1765);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -1685,14 +1688,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(77:4) {:else}",
+    		source: "(81:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:4) {#if page.display == 'image'}
+    // (79:4) {#if page.display == 'image'}
     function create_if_block_4(ctx) {
     	let img;
     	let img_src_value;
@@ -1700,16 +1703,16 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			img = element("img");
-    			if (img.src !== (img_src_value = /*answer*/ ctx[34].image)) attr_dev(img, "src", img_src_value);
+    			if (img.src !== (img_src_value = /*answer*/ ctx[35].image)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
-    			attr_dev(img, "class", "svelte-1dftq4j");
-    			add_location(img, file, 75, 5, 1631);
+    			attr_dev(img, "class", "svelte-tf7pg8");
+    			add_location(img, file, 79, 5, 1716);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, img, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*page*/ 128 && img.src !== (img_src_value = /*answer*/ ctx[34].image)) {
+    			if (dirty[0] & /*page*/ 256 && img.src !== (img_src_value = /*answer*/ ctx[35].image)) {
     				attr_dev(img, "src", img_src_value);
     			}
     		},
@@ -1722,25 +1725,25 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(75:4) {#if page.display == 'image'}",
+    		source: "(79:4) {#if page.display == 'image'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:2) {#each page.answers as answer, index}
+    // (74:2) {#each page.answers as answer, index}
     function create_each_block(ctx) {
     	let button;
     	let t0;
-    	let t1_value = /*answer*/ ctx[34].value + "";
+    	let t1_value = /*answer*/ ctx[35].value + "";
     	let t1;
     	let t2;
     	let button_status_value;
     	let dispose;
 
     	function select_block_type_1(ctx, dirty) {
-    		if (/*page*/ ctx[7].display == "image") return create_if_block_4;
+    		if (/*page*/ ctx[8].display == "image") return create_if_block_4;
     		return create_else_block;
     	}
 
@@ -1754,9 +1757,9 @@ var app = (function () {
     			t0 = space();
     			t1 = text(t1_value);
     			t2 = space();
-    			attr_dev(button, "status", button_status_value = /*answer*/ ctx[34].status || "");
-    			attr_dev(button, "class", "svelte-1dftq4j");
-    			add_location(button, file, 70, 3, 1500);
+    			attr_dev(button, "status", button_status_value = /*answer*/ ctx[35].status || "");
+    			attr_dev(button, "class", "svelte-tf7pg8");
+    			add_location(button, file, 74, 3, 1585);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, button, anchor);
@@ -1770,7 +1773,7 @@ var app = (function () {
     				button,
     				"click",
     				function () {
-    					if (is_function(/*clickAnswer*/ ctx[12].bind(this, /*answer*/ ctx[34]))) /*clickAnswer*/ ctx[12].bind(this, /*answer*/ ctx[34]).apply(this, arguments);
+    					if (is_function(/*clickAnswer*/ ctx[13].bind(this, /*answer*/ ctx[35]))) /*clickAnswer*/ ctx[13].bind(this, /*answer*/ ctx[35]).apply(this, arguments);
     				},
     				false,
     				false,
@@ -1792,9 +1795,9 @@ var app = (function () {
     				}
     			}
 
-    			if (dirty[0] & /*page*/ 128 && t1_value !== (t1_value = /*answer*/ ctx[34].value + "")) set_data_dev(t1, t1_value);
+    			if (dirty[0] & /*page*/ 256 && t1_value !== (t1_value = /*answer*/ ctx[35].value + "")) set_data_dev(t1, t1_value);
 
-    			if (dirty[0] & /*page*/ 128 && button_status_value !== (button_status_value = /*answer*/ ctx[34].status || "")) {
+    			if (dirty[0] & /*page*/ 256 && button_status_value !== (button_status_value = /*answer*/ ctx[35].status || "")) {
     				attr_dev(button, "status", button_status_value);
     			}
     		},
@@ -1809,14 +1812,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(70:2) {#each page.answers as answer, index}",
+    		source: "(74:2) {#each page.answers as answer, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (23:2) {#if document.body.parentElement.requestFullscreen}
+    // (27:2) {#if document.body.parentElement.requestFullscreen}
     function create_if_block_1(ctx) {
     	let button;
     	let t;
@@ -1829,13 +1832,13 @@ var app = (function () {
     			attr_dev(button, "id", "fullscreen");
     			attr_dev(button, "class", "game-music");
     			attr_dev(button, "pushed", /*isFullScreen*/ ctx[2]);
-    			add_location(button, file, 23, 3, 534);
+    			add_location(button, file, 27, 3, 619);
     		},
     		m: function mount(target, anchor, remount) {
     			insert_dev(target, button, anchor);
     			append_dev(button, t);
     			if (remount) dispose();
-    			dispose = listen_dev(button, "click", /*toggleFullScreen*/ ctx[11], false, false, false);
+    			dispose = listen_dev(button, "click", /*toggleFullScreen*/ ctx[12], false, false, false);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty[0] & /*isFullScreen*/ 4) {
@@ -1852,7 +1855,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(23:2) {#if document.body.parentElement.requestFullscreen}",
+    		source: "(27:2) {#if document.body.parentElement.requestFullscreen}",
     		ctx
     	});
 
@@ -1860,8 +1863,12 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	let div;
-    	let t;
+    	let div0;
+    	let t0;
+    	let div1;
+    	let img;
+    	let img_src_value;
+    	let t1;
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
@@ -1876,27 +1883,45 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div = element("div");
-    			t = space();
+    			div0 = element("div");
+    			t0 = space();
+    			div1 = element("div");
+    			img = element("img");
+    			t1 = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
-    			attr_dev(div, "id", "fader");
-    			attr_dev(div, "status", /*fader*/ ctx[1]);
-    			attr_dev(div, "class", "svelte-1dftq4j");
-    			add_location(div, file, 0, 0, 0);
+    			attr_dev(div0, "id", "fader");
+    			attr_dev(div0, "status", /*fader*/ ctx[1]);
+    			attr_dev(div0, "class", "svelte-tf7pg8");
+    			add_location(div0, file, 0, 0, 0);
+    			if (img.src !== (img_src_value = "img/dolmenia.png")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "");
+    			attr_dev(img, "class", "svelte-tf7pg8");
+    			add_location(img, file, 3, 1, 80);
+    			attr_dev(div1, "id", "dolmenia");
+    			attr_dev(div1, "show", /*showDolmenia*/ ctx[5]);
+    			attr_dev(div1, "class", "svelte-tf7pg8");
+    			add_location(div1, file, 2, 0, 39);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			insert_dev(target, t, anchor);
+    			insert_dev(target, div0, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, img);
+    			insert_dev(target, t1, anchor);
     			if (if_block) if_block.m(target, anchor);
     			insert_dev(target, if_block_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty[0] & /*fader*/ 2) {
-    				attr_dev(div, "status", /*fader*/ ctx[1]);
+    				attr_dev(div0, "status", /*fader*/ ctx[1]);
+    			}
+
+    			if (dirty[0] & /*showDolmenia*/ 32) {
+    				attr_dev(div1, "show", /*showDolmenia*/ ctx[5]);
     			}
 
     			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
@@ -1914,8 +1939,10 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    			if (detaching) detach_dev(t);
+    			if (detaching) detach_dev(div0);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div1);
+    			if (detaching) detach_dev(t1);
 
     			if (if_block) {
     				if_block.d(detaching);
@@ -1960,6 +1987,7 @@ var app = (function () {
     	let step = -1;
     	let displayedStepDelta = 0;
     	let repetedQuestions = 3;
+    	let showDolmenia = false;
     	let face = "standard";
     	let say = "";
     	let hasAnswered = false;
@@ -2010,12 +2038,12 @@ var app = (function () {
 
     				switch (command) {
     					case "face":
-    						$$invalidate(5, face = argument || "standard");
+    						$$invalidate(6, face = argument || "standard");
     						if (stage == "story") trianglePosition = talkPositions[face] || 0;
     						this.run();
     						break;
     					case "say":
-    						$$invalidate(6, say = argument || "");
+    						$$invalidate(7, say = argument || "");
     						if (!say) this.run();
     						break;
     					case "fade":
@@ -2023,16 +2051,16 @@ var app = (function () {
     						this.ready();
     						break;
     					case "hide":
-    						if (argument == "face") $$invalidate(9, showFace = false);
+    						if (argument == "face") $$invalidate(10, showFace = false); else if (argument == "dolmenia") $$invalidate(5, showDolmenia = false);
     						this.run();
     						break;
     					case "show":
-    						if (argument == "face") $$invalidate(9, showFace = true);
+    						if (argument == "face") $$invalidate(10, showFace = true); else if (argument == "dolmenia") $$invalidate(5, showDolmenia = true);
     						this.run();
     						break;
     					case "reset":
-    						$$invalidate(5, face = "standard");
-    						$$invalidate(6, say = "");
+    						$$invalidate(6, face = "standard");
+    						$$invalidate(7, say = "");
     						this.run();
     						break;
     					case "next":
@@ -2075,7 +2103,7 @@ var app = (function () {
     						$$invalidate(0, stage = "menu");
     						actions.length = 0;
     						removeEventListener("click", nextActionOnClick);
-    						$$invalidate(9, showFace = true);
+    						$$invalidate(10, showFace = true);
     						animation = "";
     						scaleX = 1;
     						scaleY = 1;
@@ -2119,8 +2147,8 @@ var app = (function () {
     		totalCurrentAnswers = 0;
     		$$invalidate(3, step++, step);
     		if (step > pages.length) return;
-    		$$invalidate(7, page = pages[step]);
-    		if (step) $$invalidate(8, headerAnimation = headerAnimations[step % headerAnimations.length]);
+    		$$invalidate(8, page = pages[step]);
+    		if (step) $$invalidate(9, headerAnimation = headerAnimations[step % headerAnimations.length]);
 
     		for (let node of document.querySelectorAll("#main > button")) {
     			node.setAttribute("status", "");
@@ -2154,10 +2182,10 @@ var app = (function () {
     				if (totalCurrentAnswers >= requestedAnswers) {
     					if (page.outro) actions.execute(page.outro);
     					actions.do(next);
-    				} else {
+    				} else if (page.sentencesNext) {
     					actions.execute(`
 					face
-					say ${random(butAlso)}
+					say ${random(page.sentencesNext)}
 				`);
     				}
     			},
@@ -2219,6 +2247,7 @@ var app = (function () {
     		step,
     		displayedStepDelta,
     		repetedQuestions,
+    		showDolmenia,
     		face,
     		say,
     		hasAnswered,
@@ -2252,17 +2281,18 @@ var app = (function () {
     		if ("isFullScreen" in $$props) $$invalidate(2, isFullScreen = $$props.isFullScreen);
     		if ("step" in $$props) $$invalidate(3, step = $$props.step);
     		if ("displayedStepDelta" in $$props) $$invalidate(4, displayedStepDelta = $$props.displayedStepDelta);
-    		if ("repetedQuestions" in $$props) $$invalidate(10, repetedQuestions = $$props.repetedQuestions);
-    		if ("face" in $$props) $$invalidate(5, face = $$props.face);
-    		if ("say" in $$props) $$invalidate(6, say = $$props.say);
+    		if ("repetedQuestions" in $$props) $$invalidate(11, repetedQuestions = $$props.repetedQuestions);
+    		if ("showDolmenia" in $$props) $$invalidate(5, showDolmenia = $$props.showDolmenia);
+    		if ("face" in $$props) $$invalidate(6, face = $$props.face);
+    		if ("say" in $$props) $$invalidate(7, say = $$props.say);
     		if ("hasAnswered" in $$props) hasAnswered = $$props.hasAnswered;
     		if ("totalCurrentAnswers" in $$props) totalCurrentAnswers = $$props.totalCurrentAnswers;
-    		if ("page" in $$props) $$invalidate(7, page = $$props.page);
+    		if ("page" in $$props) $$invalidate(8, page = $$props.page);
     		if ("actionCallbackId" in $$props) actionCallbackId = $$props.actionCallbackId;
-    		if ("headerAnimation" in $$props) $$invalidate(8, headerAnimation = $$props.headerAnimation);
+    		if ("headerAnimation" in $$props) $$invalidate(9, headerAnimation = $$props.headerAnimation);
     		if ("speakDirection" in $$props) speakDirection = $$props.speakDirection;
     		if ("trianglePosition" in $$props) trianglePosition = $$props.trianglePosition;
-    		if ("showFace" in $$props) $$invalidate(9, showFace = $$props.showFace);
+    		if ("showFace" in $$props) $$invalidate(10, showFace = $$props.showFace);
     		if ("animation" in $$props) animation = $$props.animation;
     		if ("scaleX" in $$props) scaleX = $$props.scaleX;
     		if ("scaleY" in $$props) scaleY = $$props.scaleY;
@@ -2281,6 +2311,7 @@ var app = (function () {
     		isFullScreen,
     		step,
     		displayedStepDelta,
+    		showDolmenia,
     		face,
     		say,
     		page,
